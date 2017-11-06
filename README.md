@@ -1,4 +1,7 @@
-# Target Self
+# NoBlank
 
-I dislike how clicking on some links opens a new window or tab, so I decided to develop an extension called "Target Self" that solves the problem by modifying the target attribute of a link.
+This is a simple Chrome extension that replaces the "\_blank" from target attribute of anchor elements with "\_self".
+
+I developed this because I personally dislike having a new tab/window opened when I don't expect it to happen. Not saying there aren't good reasons to use \_blank, it's just that I often find cases that I rather not have it.
+
 
