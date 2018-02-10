@@ -1,0 +1,24 @@
+<!--this HTML is based on content from Google's developer page, on the following page https://developer.chrome.com/extensions/options, CC-By 3.0 license https://creativecommons.org/licenses/by/3.0/-->
+<!DOCTYPE html>
+<html>
+<head><title>NoBlank options</title></head>
+<body>
+<p>
+Sites to apply (structure: "www.example.com", domain-wide support only, separate domains by using commas or new lines):
+<p>
+<textarea rows="4" cols="10" id="blacklist"></textarea>
+</p>
+</p>
+<p>
+<label>
+  <input type="checkbox" id="debug">
+  Debug mode (Elements with _blank will be highlighted)
+</label>
+</p>
+<p>
+<button id="save">Save</button>
+<div id="status"></div>
+</p>
+<script src="options.js"></script>
+</body>
+</html>
