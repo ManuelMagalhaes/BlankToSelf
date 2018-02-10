@@ -1,30 +1,42 @@
+chrome.storage.sync.get(function(result){
 	var previousElement = null;
 	var MOUSE_VISITED_CLASSNAME = 'crx_mouse_visited';
-	
-	document.addEventListener('mouseover', function(e) {
+	var blacklist = "";
+	var debug=false;
+	blacklist = result.blacklist;
+	debug=result.debug;
+	if(blacklist[0].includes(document.domain)){
 
-		var hoveredElement = event.target;
-		var anchorElement = hoveredElement.closest("A");
-		if (anchorElement === null) {
-			return;
-		} else if (anchorElement.target == "_blank") {
-			if (previousElement != null) {
-				previousElement.classList.remove(MOUSE_VISITED_CLASSNAME);
+		if(debug){
+			document.addEventListener('mouseover', function(e) {
+
+				var hoveredElement = event.target;
+				var anchorElement = hoveredElement.closest("A");
+				if (anchorElement === null) {
+					return;
+				} else if (anchorElement.target == "_blank") {
+					if (previousElement != null) {
+						previousElement.classList.remove(MOUSE_VISITED_CLASSNAME);
+					}
+					hoveredElement.classList.add(MOUSE_VISITED_CLASSNAME);
+					previousElement = hoveredElement;
+				}
+			}, false);
+		}
+
+		document.addEventListener('click', function(e) {
+
+			var hoveredElement = event.target;
+			var anchorElement = hoveredElement.closest("A");
+
+			if (anchorElement === null) {
+				return;
+			} else if (anchorElement.target == "_blank") {
+
+				anchorElement.target = "_self";
 			}
-			hoveredElement.classList.add(MOUSE_VISITED_CLASSNAME);
-			previousElement = hoveredElement;
-		}
-	}, false);
+		}, false);
 
-	document.addEventListener('click', function(e) {
+	}
+});
 
-		var hoveredElement = event.target;
-		var anchorElement = hoveredElement.closest("A");
-
-		if (anchorElement === null) {
-			return;
-		} else if (anchorElement.target == "_blank") {
-
-			anchorElement.target = "_self";
-		}
-	}, false);
