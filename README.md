@@ -1,4 +1,4 @@
-# NoBlank
+# BlankToSelf
 
 This is a simple extension for Firefox and Chrome that replaces the "\_blank" from target attribute of anchor elements with "\_self".
 
